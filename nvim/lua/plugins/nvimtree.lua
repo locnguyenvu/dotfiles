@@ -4,4 +4,11 @@ require('nvim-tree').setup {
 		relativenumber = true, 
         width = 40,
 	},
+	filters = {
+		custom = { '__pycache__', '*.egg-info', 'node_modules', '.venv' },
+		exclude = {},
+	},
+	git = {
+		ignore = true,
+	}
 }
