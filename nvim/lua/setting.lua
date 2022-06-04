@@ -15,11 +15,6 @@ o.number = true
 o.rnu = true
 o.mouse = 'a'
 o.clipboard = 'unnamed,unnamedplus'
--- vim.opt.tabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.expandtab = true
--- vim.opt.autoindent = true
--- vim.opt.autoread = true
 
 vim.cmd([[
   augroup packer_user_config
