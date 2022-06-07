@@ -5,6 +5,9 @@ map('n', '<Space>', '<Nop>', {})
 vim.g.mapleader = ' '
 vim.g.localmapleader = '<Space>'
 
+-- Terminal
+map('t', '<esc>', '<c-\\><c-n>', { nowait=true })
+
 -- NERDTree
 map('n', '<leader>nt', ':NvimTreeToggle<CR>', {})
 map('n', '<leader>nf', ':NvimTreeFindFile<CR>', {})
