@@ -10,9 +10,7 @@ require("bufferline").setup{
         show_close_icon = false,
         show_buffer_close_icons = false,
         offsets = {{filetype = "NvimTree", text = "File Explorer"}},
+		middle_mouse_command = "bdelete! %d",
     }
 }
 
-if call_func('has', {'win32',}) == 1 then
-    vim.api.nvim_set_var('g:Lf_Ctags', 'C:\\ProgramData\\chocolatey\\bin\\ctags.exe')
-end
