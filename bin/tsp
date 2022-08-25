@@ -1,21 +1,56 @@
 #!/usr/bin/env php
 <?php
 
-$cliArgument = array_slice($argv, 1);
+$help = <<<EOD
+Convert date time string to timestamp
+Usage: tsp [-m] <time-format>
+Time format: 
+	2022-08-25T15:16:17.908Z
+	2022-08-25T15:16:17
+	2022-08-25 15:16:17
+Options:
+	-m 	Return milisecond
+EOD;
 
+
+$cliArgument = array_slice($argv, 1);
 $options = [];
-$timeString = array_pop($cliArgument);
-foreach ($cliArgument as $arg) {
-    if (preg_match('/^\-[a-z]/', $arg)) {
+$timeStringChunks = [];
+do {
+	$arg = array_shift($cliArgument);
+	if (empty($arg)) {
+		break;
+	}
+	if (preg_match('/^\-[a-z]/', $arg) && count($timeStringChunks) == 0) {
         $options[] = preg_replace('/^\-/', '', $arg);
-    }
+		continue;
+	}
+	$timeStringChunks[] = $arg;	
+} while	(count($cliArgument) > 0);
+
+$timeString = implode(' ', $timeStringChunks);
+if (empty($timeString) || in_array('h', $options)) {
+	echo $help;
+	return;
 }
+
 try {
-    $time = strtotime($timeString);
-    if (in_array('m', $options)) {
-        $time = $time*1000;
-    }
-    echo $time;
+	# Format: 2022-08-25T15:16:17.908Z
+	if (preg_match('/\d{4}\-\d{1,2}\-\d{1,2}T\d{1,2}:\d{1,2}:\d{1,2}\.\d{3}Z/', $timeString)) {
+		$milisecond = substr($timeString, -4, 3);
+		$timeString = substr($timeString, 0, strlen($timeString)-5);
+		$time = strtotime(str_replace('T', ' ', $timeString));
+		$result = $time*1000 + intval($milisecond);
+		echo $result; exit;
+	}
+	# Format: 2022-08-25T15:16:17 or 2022-08-25 15:16:17
+	if (preg_match('/\d{4}\-\d{1,2}\-\d{1,2}(T|\s)\d{1,2}:\d{1,2}:\d{1,2}/', $timeString)) {
+		$time = strtotime(str_replace('T', ' ', $timeString));
+		if (in_array('m', $options)) {
+			$time = $time*1000;
+		}
+		echo $time; exit;
+	}
 } catch (\Exception $e) {
     exit(2);
 }

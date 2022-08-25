@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function help {
+	echo "Transform camleCase to snake_case"
+	echo "Usage: sc <input>"
+}
+if [ "$1" == "" ]; then
+	help
+	exit
+fi
+sed -r 's/([a-z0-9])([A-Z])/\1_\2/g' <<< $1 | awk '{print tolower($0)}'
