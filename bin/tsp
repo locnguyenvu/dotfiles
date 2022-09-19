@@ -8,6 +8,7 @@ Time format:
 	2022-08-25T15:16:17.908Z
 	2022-08-25T15:16:17
 	2022-08-25 15:16:17
+	Mon, 19 Sep 2022 01:52:45 GMT
 Options:
 	-m 	Return milisecond
 EOD;
@@ -51,6 +52,14 @@ try {
 		}
 		echo $time; exit;
 	}
+
+	# Use DateTime class to detect https://www.php.net/manual/en/class.datetime.php
+	$time = (new DateTime($timeString))->getTimestamp();
+	if (in_array('m', $options)) {
+		$time = $time*1000;
+	}
+	echo $time; exit;
+
 } catch (\Exception $e) {
     exit(2);
 }
