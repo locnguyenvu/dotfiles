@@ -1,0 +1,26 @@
+{
+    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+    "go_logrus_json" : {
+        "title" : "Golang logrus",
+	"json": true,
+        "level-field" : "log_level",
+	"timestamp-field": "Timestamp",
+	"body-field": "logmessage",
+	"value": {
+		"Application": {
+			"kind": "string",
+			"hidden": true
+		},
+		"UUID": {
+			"kind": "string",
+			"hidden": true
+		}
+	},
+	"line-format": [ {"field": "Timestamp"}, " [", {"field": "log_level"}, "]", "\t", {"field": "logmessage"} ],
+        "sample" : [
+            {
+		"line" : "{\"Application\":\"tagging-restriction-service\",\"Timestamp\":\"2022-10-05 06:37:35.601\",\"log_level\":\"info\",\"logmessage\":{\"msg\":\"/tagging_rules_proto.Tagg ingRulesService/GetAccountSTORestrictions\",\"platform-go-grpc\":\"UnaryServerInterceptor new request\"}}"
+            }
+        ]
+    }
+}

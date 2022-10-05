@@ -2,7 +2,9 @@ local call_func = vim.api.nvim_call_function
 
 require("bufferline").setup{
     options = {
-        indicator_icon = '▎',
+        indicator = {
+			icon = '▎'
+		},
         modified_icon = '●',
         left_trunc_marker = '',
         right_trunc_marker = '',
