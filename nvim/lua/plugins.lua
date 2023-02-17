@@ -21,7 +21,16 @@ return require('packer').startup(function()
     use { 'ryanoasis/vim-devicons' }
 	use { 'lukas-reineke/indent-blankline.nvim' , config = lua_path"indent-blankline"}
     use { 'neomake/neomake' }
+
+    -- lsp config
 	use { 'neovim/nvim-lspconfig', config = lua_path"nvim-lspconfig" }
+    use { 'hrsh7th/cmp-nvim-lsp', config = lua_path"cmp-nvim" }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-path' }
+    use { 'hrsh7th/cmp-cmdline' }
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-vsnip' }
+    use { 'hrsh7th/vim-vsnip' }
 
 	-- Ruby on rails
 	use { 'tpope/vim-rails'}
