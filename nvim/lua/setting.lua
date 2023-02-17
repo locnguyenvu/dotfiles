@@ -15,6 +15,11 @@ o.number = true
 o.rnu = true
 o.mouse = 'a'
 o.clipboard = 'unnamed,unnamedplus'
+o.expandtab = true
+o.autoindent = true
+o.smartindent = true
+o.shiftwidth = 4
+o.tabstop = 4
 
 vim.cmd([[
   augroup packer_user_config
