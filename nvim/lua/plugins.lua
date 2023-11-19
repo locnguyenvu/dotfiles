@@ -14,9 +14,10 @@ return require('packer').startup(function()
 	use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = lua_path"bufferline" }
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', opt = true } 
     use { 'Yggdroot/LeaderF', run = ':LeaderfInstallCExtension', config = lua_path"leaderf" } -- requires pynvim, python-devel
+    use { 'stsewd/isort.nvim', run = ':UpdateRemotePlugins' }
     use { "nvim-treesitter/nvim-treesitter", config = lua_path"nvim-treesitter" }
     use { 'feline-nvim/feline.nvim', config = lua_path"feline"}
-    use { 'kyazdani42/nvim-tree.lua', tag = 'nightly', config = lua_path"nvimtree" }
+    use { 'nvim-tree/nvim-tree.lua', config = lua_path"nvimtree" }
     use { 'tpope/vim-fugitive' }
     use { 'ryanoasis/vim-devicons' }
 	use { 'lukas-reineke/indent-blankline.nvim' , config = lua_path"indent-blankline"}

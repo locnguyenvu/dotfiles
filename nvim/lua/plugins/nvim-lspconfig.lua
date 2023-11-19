@@ -34,15 +34,31 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'eslint', 'solargraph', 'gopls', }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
+require'lspconfig'.pylsp.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = false,
+          ignore = {'W391'},
+          maxLineLength = 160
+        },
+        flake8 = {
+          enabled = true,
+          ignore = {'E501'},
+          maxLineLength = 160
+        },
+        ruff = {
+          enabled = true,
+          extendSelect = { "I" },
+        }
+      }
     }
   }
-end
+}
