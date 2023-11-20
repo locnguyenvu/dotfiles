@@ -19,7 +19,10 @@ map('n', '<leader>h', ':BufferLineCyclePrev<CR>', {})
 map('n', '<leader>e', ':BufferLinePick<CR>', {})
 map('n', '<leader>d', ':BufferLinePickClose<CR>', {})
 
--- Leaderf
-map('n', '<C-p>', ':Leaderf file<CR>', {})
-map('n', '<C-o>', ':Leaderf buffer<CR>', {})
-map('n', 'mm', ':Leaderf function<CR>', { noremap = true })
+-- Telescope
+map('n', '<C-p>', ':Telescope find_files<CR>', {})
+map('n', '<C-o>', ':Telescope buffers<CR>', {})
+map('n', 'mm', ':Telescope tags<CR>', { noremap = true })
+
+-- Outline
+map('n', '<C-i>', ':SymbolsOutline<CR>', {})
