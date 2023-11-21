@@ -62,3 +62,13 @@ require'lspconfig'.pylsp.setup{
     }
   }
 }
+require'lspconfig'.rust_analyzer.setup{
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+}

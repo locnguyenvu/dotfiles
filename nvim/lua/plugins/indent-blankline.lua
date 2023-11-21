@@ -5,7 +5,6 @@ vim.opt.listchars:append "eol:↴"
 require("ibl").setup {
     debounce = 100,
     indent = { 
-        char = "|",
         highlight = { "Function", "Label" },
         smart_indent_cap = true,
         priority = 2

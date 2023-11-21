@@ -25,4 +25,4 @@ map('n', '<C-o>', ':Telescope buffers<CR>', {})
 map('n', 'mm', ':Telescope tags<CR>', { noremap = true })
 
 -- Outline
-map('n', '<C-i>', ':SymbolsOutline<CR>', {})
+map('n', '<C-i>', ':Lspsaga outline<CR>', {})

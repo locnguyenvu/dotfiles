@@ -24,7 +24,7 @@ return require('packer').startup(function()
     use { 'neomake/neomake' }
     use { "nvim-lua/plenary.nvim" }
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.4', config = lua_path'telescope' }
-    use { 'simrat39/symbols-outline.nvim', config = lua_path'outline' }
+    -- use { 'simrat39/symbols-outline.nvim', config = lua_path'outline' }
 
     -- lsp config
     use { 'neovim/nvim-lspconfig', config = lua_path"nvim-lspconfig" }
@@ -36,8 +36,14 @@ return require('packer').startup(function()
     use { 'hrsh7th/cmp-vsnip' }
     use { 'hrsh7th/vim-vsnip' }
 
+    use {'williamboman/mason.nvim', config = lua_path'mason' }
+    use {'williamboman/mason-lspconfig.nvim', config = lua_path'mason' }
+
     -- Ruby on rails
     use { 'tpope/vim-rails'}
+
+    -- Rust
+    use 'simrat39/rust-tools.nvim'
 
     -- Themes
     use { 'dracula/vim', as = 'dracula' }
