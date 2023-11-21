@@ -29,12 +29,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  -- vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'eslint', 'solargraph', 'gopls', }
+local servers = { 'eslint', 'solargraph', 'gopls', 'phpactor', 'tsserver' }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
@@ -46,3 +46,26 @@ for _, lsp in pairs(servers) do
     }
   }
 end
+
+require('lspconfig').pylsp.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    -- This will be the default in neovim 0.7+
+    debounce_text_changes = 150,
+  },
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 150
+        },
+        ruff = {
+          enabled = true,
+          extendSelect = { "I" },
+        }
+      }
+    }
+  }
+}
