@@ -30,6 +30,7 @@ return require('packer').startup(function()
 
   -- hcl syntax highlight
   use { 'jvirtanen/vim-hcl' }
+  use { 'nathangrigg/vim-beancount' }
 
   -- lsp config
   use { 'neovim/nvim-lspconfig', config = lua_path"nvim-lspconfig" }

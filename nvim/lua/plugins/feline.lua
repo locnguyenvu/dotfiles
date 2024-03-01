@@ -2,7 +2,6 @@ local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local ts_utils = require("nvim-treesitter.ts_utils")
 local ts_parsers = require("nvim-treesitter.parsers")
-local ts_queries = require("nvim-treesitter.query")
 
 
 local force_inactive = {
@@ -146,21 +145,6 @@ components.active[1][3] = {
       style = 'bold'
     },
   }
-}
--- TreeSitter
-components.active[1][4] = {
-  provider = function()
-    return require("nvim-treesitter").statusline({
-        indicator_size = 90,
-        type_patterns = {'class', 'function', 'method'},
-        transform_fn = function(line) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
-        separator = ' -> '
-    })
-  end,
-  enabled = function()
-    return ts_parsers.has_parser()
-  end,
-  right_sep = ' '
 }
 
 -- MID

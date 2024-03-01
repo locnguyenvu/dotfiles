@@ -1,0 +1,5 @@
+[font]
+size = 16
+normal = { family = "DaddyTimeMono Nerd Font" }
+[window]
+padding = {x = 9, y = 9}
