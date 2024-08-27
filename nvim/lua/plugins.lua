@@ -11,11 +11,12 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons', config = lua_path"bufferline" }
-  use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', opt = true } 
+  use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons', config = lua_path"bufferline" }
+  use { 'nvim-lualine/lualine.nvim', requires = 'nvim-tree/nvim-web-devicons', opt = true } 
   use { "nvim-treesitter/nvim-treesitter", config = lua_path"nvim-treesitter" }
   use { 'feline-nvim/feline.nvim', config = lua_path"feline"}
-  use { 'kyazdani42/nvim-tree.lua', tag = 'nightly', config = lua_path"nvimtree" }
+  use { 'nvim-tree/nvim-tree.lua', config = lua_path"nvimtree"}
+  use { 'nvim-tree/nvim-web-devicons'}
   use { 'tpope/vim-fugitive' }
   use { 'ryanoasis/vim-devicons' }
   use { 'lukas-reineke/indent-blankline.nvim' , config = lua_path"indent-blankline"}
